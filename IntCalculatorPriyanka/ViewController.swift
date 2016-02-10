@@ -22,6 +22,23 @@ class ViewController: UIViewController {
         displayPanel.text = displayText + buttonText
     }
     
+    
+    @IBAction func clearPressed(sender: UIButton) {
+        displayPanel.text = ""
+    }
+    
+    
+    @IBAction func changeSign(sender: AnyObject) {
+        
+        let displayText = displayPanel.text ?? ""
+        
+        let possibleInt : Int? = Int(displayText)
+        
+        if let actualInt = possibleInt {
+            displayPanel.text = "\(actualInt * -1)"
+        }
+    }
+    
 
 }
 
