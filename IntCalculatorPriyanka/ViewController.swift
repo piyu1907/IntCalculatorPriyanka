@@ -2,24 +2,26 @@
 //  ViewController.swift
 //  IntCalculatorPriyanka
 //
-//  Created by Advait Mahashabde on 2/10/16.
-//  Copyright © 2016 AdiDevWorks. All rights reserved.
+//  Created by Priyanka Manjrekar on 2/10/16.
+//  Copyright © 2016 Priyanka Manjrekar. All rights reserved.
 //
 
 import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    @IBOutlet weak var displayPanel: UILabel!
+    
+    
+    @IBAction func numberPressed(sender: UIButton) {
+        
+        let buttonText = sender.titleLabel?.text ?? ""
+        
+        let displayText = displayPanel.text ?? ""
+        
+        displayPanel.text = displayText + buttonText
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
 
 }
 
