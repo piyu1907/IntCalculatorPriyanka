@@ -9,6 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var storedRegister: Int?
 
     @IBOutlet weak var displayPanel: UILabel!
     
@@ -39,6 +41,25 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func operationPressed(sender: UIButton) {
+        
+        let displayText = displayPanel.text ?? ""
+        storedRegister = Int(displayText)
+        displayPanel.text = ""
+    }
+    
+    
 
+    @IBAction func equalsPressed(sender: UIButton) {
+        
+        let displayText = displayPanel.text ?? ""
+        
+        let displayRegister : Int? = Int(displayText)
+        
+        if(storedRegister != nil && displayRegister != nil){
+            let result = add(storedRegister!, addend: displayRegister!)
+            displayPanel.text = result
+        }
+    }
 }
 
