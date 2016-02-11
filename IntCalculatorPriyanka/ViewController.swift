@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController {
     
     var storedRegister: Int?
+    
+    var operation: String?
 
     @IBOutlet weak var displayPanel: UILabel!
     
@@ -43,6 +45,7 @@ class ViewController: UIViewController {
     
     @IBAction func operationPressed(sender: UIButton) {
         
+        operation = sender.titleLabel?.text
         let displayText = displayPanel.text ?? ""
         storedRegister = Int(displayText)
         displayPanel.text = ""
@@ -56,8 +59,27 @@ class ViewController: UIViewController {
         
         let displayRegister : Int? = Int(displayText)
         
-        if(storedRegister != nil && displayRegister != nil){
-            let result = add(storedRegister!, addend: displayRegister!)
+        if(storedRegister != nil && displayRegister != nil && operation != nil){
+            
+            var result: String
+            
+            switch(operation!){
+                
+                case "+":
+                    result = add(storedRegister!, addend: displayRegister!)
+                case "-":
+                    result = subtract(storedRegister!, subtrahend: displayRegister!)
+                case "*":
+                    result = multiply(storedRegister!, multiplier: displayRegister!)
+                case "/":
+                    result = divide(storedRegister!, divisor: displayRegister!)
+                case "%":
+                    result = remainder(storedRegister!, divisor: displayRegister!)
+                default:
+                    result = "I don't recognize '\(operation)'"
+                
+            }
+            
             displayPanel.text = result
         }
     }
